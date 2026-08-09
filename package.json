@@ -1,0 +1,12 @@
+{
+  "name": "roberts-oxygen-redesign",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Unsolicited concept redesign of robertsoxygen.com — portfolio project, not affiliated with Roberts Oxygen Company, Inc.",
+  "scripts": {
+    "start": "serve -s . -l ${PORT:-3000}"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
