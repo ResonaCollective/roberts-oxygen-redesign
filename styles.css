@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Roberts Oxygen — concept redesign
+   Roberts Oxygen: concept redesign
    Unsolicited portfolio concept. Not affiliated with Roberts Oxygen Co.
    ========================================================================== */
 
@@ -72,6 +72,13 @@ p{ margin: 0; }
 
 .section{ padding: 64px 0; }
 @media (min-width: 1000px){ .section{ padding: 96px 0; } }
+
+/* ---------- scroll reveal ---------- */
+.reveal{ opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.reveal.is-visible{ opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity: 1; transform: none; }
+}
 
 .section-dark{ background: var(--charcoal); color: var(--steel-100); }
 .section-tint{ background: var(--steel-50); }
@@ -397,12 +404,12 @@ p{ margin: 0; }
 .industry-wrap{ display: flex; flex-direction: column; gap: 20px; }
 @media (min-width: 860px){ .industry-wrap{ flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; } }
 .industry-intro{ max-width: 30em; }
-.industry-tags{ display: flex; flex-wrap: wrap; gap: 10px; }
+.industry-tags{ display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0; max-width: 34em; }
 .industry-tag{
   font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; letter-spacing: .03em;
-  border: 1px solid var(--steel-150); border-radius: 100px; padding: 9px 16px;
   color: var(--charcoal); white-space: nowrap;
 }
+.industry-tags .sep{ color: var(--steel-300); margin: 0 12px; }
 
 /* ---------- bulk feature ---------- */
 .bulk-grid{ display: grid; gap: 32px; align-items: center; }

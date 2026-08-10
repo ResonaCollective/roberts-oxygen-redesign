@@ -1,4 +1,4 @@
-// Roberts Oxygen — concept redesign
+// Roberts Oxygen: concept redesign
 // Location data transcribed directly from the live robertsoxygen.com/locations page (57 branches, 9 states).
 
 const LOCATIONS = [
@@ -143,7 +143,7 @@ function runFilter(){
   }
 
   if (matches.length === 0) {
-    resultsEl.innerHTML = `<div class="locations-empty">No branch matches “${q}”. Try a city, ZIP or state — or call (301) 315-9090 and we'll point you to the right one.</div>`;
+    resultsEl.innerHTML = `<div class="locations-empty">No branch matches “${q}”. Try a city, ZIP or state, or call (301) 315-9090 and we'll point you to the right one.</div>`;
   } else {
     resultsEl.innerHTML = matches.map(locationCard).join("");
   }
@@ -181,5 +181,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // mobile action bar padding
   if (window.matchMedia("(max-width: 719px)").matches) {
     document.body.classList.add("has-mobile-bar");
+  }
+
+  // reveal-on-scroll for section groups
+  const revealTargets = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && revealTargets.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    revealTargets.forEach(el => observer.observe(el));
+  } else {
+    revealTargets.forEach(el => el.classList.add("is-visible"));
   }
 });
