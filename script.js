@@ -183,7 +183,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("has-mobile-bar");
   }
 
-  // reveal-on-scroll for section groups
+  // reveal-on-scroll for section groups, with a hard fallback so content
+  // can never get stuck invisible if the observer misses an element
   const revealTargets = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealTargets.length) {
     const observer = new IntersectionObserver((entries) => {
@@ -193,8 +194,12 @@ document.addEventListener("DOMContentLoaded", () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -10% 0px" });
     revealTargets.forEach(el => observer.observe(el));
+    setTimeout(() => {
+      revealTargets.forEach(el => el.classList.add("is-visible"));
+      observer.disconnect();
+    }, 1500);
   } else {
     revealTargets.forEach(el => el.classList.add("is-visible"));
   }
