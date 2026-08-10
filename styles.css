@@ -330,6 +330,10 @@ p{ margin: 0; }
   .hero-copy{ padding: 20px 20px 60px 0; display: flex; flex-direction: column; justify-content: center; }
   .hero-visual{ min-height: 460px; }
   .hero-visual .photo-directive{ min-height: 460px; }
+
+  /* no visual panel: let the copy column stand alone instead of leaving an empty track */
+  .hero-grid-solo{ grid-template-columns: 1fr; }
+  .hero-grid-solo .hero-copy{ padding-right: 20px; max-width: 680px; }
 }
 
 .h1-mark{ margin-top: 16px; }
@@ -413,7 +417,12 @@ p{ margin: 0; }
 
 /* ---------- bulk feature ---------- */
 .bulk-grid{ display: grid; gap: 32px; align-items: center; }
-@media (min-width: 900px){ .bulk-grid{ grid-template-columns: 1fr 1fr; gap: 56px; } }
+@media (min-width: 900px){
+  .bulk-grid{ grid-template-columns: 1fr 1fr; gap: 56px; }
+  /* no visual panel: let the copy column stand alone instead of leaving an empty track */
+  .bulk-grid-solo{ grid-template-columns: 1fr; }
+  .bulk-grid-solo .bulk-copy{ max-width: 680px; }
+}
 .bulk-copy .lede{ margin-top: 16px; }
 .bulk-specs{ margin-top: 26px; display: grid; gap: 10px; }
 .bulk-spec{ display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--steel-700); }
