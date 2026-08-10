@@ -59,6 +59,10 @@ body{
 img{ max-width: 100%; display: block; }
 a{ color: inherit; text-decoration: none; }
 button{ font: inherit; cursor: pointer; }
+a:focus-visible, button:focus-visible, input:focus-visible{
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
 ul{ margin: 0; padding: 0; list-style: none; }
 h1,h2,h3,h4{ margin: 0; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.01em; text-transform: uppercase; }
 p{ margin: 0; }
@@ -514,6 +518,7 @@ p{ margin: 0; }
   border-top: 1px solid var(--steel-150);
   background: var(--white);
   box-shadow: 0 -6px 20px rgba(23,26,24,.09);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .mobile-bar a{
   display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -524,8 +529,7 @@ p{ margin: 0; }
 .mobile-bar .mb-primary{ background: var(--green); color: var(--white); }
 .mobile-bar .mb-secondary{ background: var(--charcoal); color: var(--white); }
 @media (min-width: 720px){ .mobile-bar{ display: none; } }
-body.has-mobile-bar{ padding-bottom: 58px; }
-@media (min-width: 720px){ body.has-mobile-bar{ padding-bottom: 0; } }
+@media (max-width: 719px){ body{ padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)); } }
 
 /* ---------- footer ---------- */
 .site-footer{ background: var(--charcoal); color: var(--steel-300); padding: 64px 0 0; }

@@ -164,6 +164,12 @@ document.addEventListener("DOMContentLoaded", () => {
     runFilter();
   });
 
+  // placeholder links (deeper pages not built in this homepage concept):
+  // stop them from yanking the page to the top
+  document.querySelectorAll('a[href="#"]').forEach(a => {
+    a.addEventListener("click", (e) => e.preventDefault());
+  });
+
   // nav toggle
   const navToggle = document.getElementById("navToggle");
   const mobilePanel = document.getElementById("mobilePanel");
@@ -177,11 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
   document.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
-
-  // mobile action bar padding
-  if (window.matchMedia("(max-width: 719px)").matches) {
-    document.body.classList.add("has-mobile-bar");
-  }
 
   // reveal-on-scroll for section groups, with a hard fallback so content
   // can never get stuck invisible if the observer misses an element
