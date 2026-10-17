@@ -12,7 +12,7 @@ Full write-up of the design process (assessment, IA, visual direction) lives in 
 
 ## Stack
 
-Plain HTML/CSS/JS, no build step, no framework. `serve` is used only to host the static files in production.
+Plain HTML/CSS/JS, no framework. `npm run build` (scripts/build.mjs) copies only the public files into `dist/` and strips every HTML, CSS and JS comment; production serves `dist/` with `serve`. README, package.json, `source-assets/` and `artifact_fragment.html` are never published.
 
 ```
 index.html         homepage
@@ -27,5 +27,7 @@ source-assets/      original header sprite this project's photography was croppe
 ## Run locally
 
 ```bash
-npx serve .
+npm install
+npm run build
+npm start
 ```
